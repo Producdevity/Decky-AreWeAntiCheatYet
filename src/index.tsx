@@ -5,12 +5,14 @@ import {
   callable,
   definePlugin,
   toaster,
-  // routerHook
+  routerHook
 } from '@decky/api'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FaShip } from 'react-icons/fa'
 
 import logo from '../assets/logo.png'
+import { getSettings, saveSettings, Settings, subscribeToSettings } from './utils/settings'
+import patchLibraryApp from './lib/patchLibraryApp'
 
 // This function calls the python function "add", which takes in two numbers and returns their sum (as a number)
 // Note the type annotations:
@@ -24,16 +26,33 @@ const startTimer = callable<[], void>('start_timer')
 
 function Content() {
   const [result, setResult] = useState<number | undefined>()
+  const [settings, setSettings] = useState<Settings>(getSettings())
+
+  useEffect(() => {
+    const unsubscribe = subscribeToSettings((settings) => setSettings(settings))
+    return () => unsubscribe()
+  }, [])
 
   const onClick = async () => {
     const result = await add(Math.random(), Math.random())
     setResult(result)
   }
 
-  const [isEnabled, setIsEnabled] = useState(false)
-
   return (
-    <PanelSection title="Panel Section">
+    <PanelSection title="AreWeAntiCheatYet Settings">
+      <PanelSectionRow>
+        <ToggleField
+          label="Show Status Badge"
+          checked={settings.showBadge}
+          onChange={(showBadge) => {
+            const newSettings = { ...settings, showBadge }
+            setSettings(newSettings)
+            saveSettings(newSettings)
+          }}
+        />
+      </PanelSectionRow>
+
+
       <PanelSectionRow>
         <ButtonItem layout="below" onClick={onClick}>
           {result ?? 'Add two numbers via Python'}
@@ -43,9 +62,6 @@ function Content() {
         <ButtonItem layout="below" onClick={() => startTimer()}>
           {'Start Python timer'}
         </ButtonItem>
-      </PanelSectionRow>
-      <PanelSectionRow>
-        <ToggleField label="Enable" checked={isEnabled} onChange={(checked) => setIsEnabled(checked)} />
       </PanelSectionRow>
 
       <PanelSectionRow>
@@ -88,11 +104,12 @@ export default definePlugin(() => {
     },
   )
 
-  return {
+  const libraryPatch = patchLibraryApp()
+ return {
     // The name shown in various decky menus
-    name: 'Test Plugin',
+    name: 'AreWeAntiCheatYet',
     // The element displayed at the top of your plugin's menu
-    titleView: <div className={staticClasses.Title}>Decky Example Plugin</div>,
+    titleView: <div className={staticClasses.Title}>AreWeAntiCheatYet</div>,
     // The content of your plugin's menu
     content: <Content />,
     // The icon displayed in the plugin list
@@ -101,6 +118,7 @@ export default definePlugin(() => {
     onDismount() {
       console.log('Unloading')
       removeEventListener('timer_event', listener)
+      routerHook.removePatch('/library/app/:appid', libraryPatch)
       // serverApi.routerHook.removeRoute("/decky-plugin-test");
     },
   }
