@@ -22,8 +22,8 @@ importers:
         specifier: ^1.0.1
         version: 1.0.1
       '@decky/ui':
-        specifier: ^4.7.2
-        version: 4.7.2
+        specifier: ^4.9.2
+        version: 4.9.2
       '@types/react':
         specifier: 18.3.3
         version: 18.3.3
@@ -33,9 +33,12 @@ importers:
       '@types/webpack':
         specifier: ^5.28.5
         version: 5.28.5
+      prettier:
+        specifier: ^3.5.3
+        version: 3.5.3
       rollup:
-        specifier: ^4.22.5
-        version: 4.22.5
+        specifier: 3.29.4
+        version: 3.29.4
       typescript:
         specifier: ^5.6.2
         version: 5.6.2
@@ -48,8 +51,8 @@ packages:
   '@decky/rollup@1.0.1':
     resolution: {integrity: sha512-dx1VJwD7ul14PA/aZvOwAfY/GujHzqZJ+MFb4OIUVi63/z4KWMSuZrK6QWo0S4LrNW3RzB3ua6LT0WcJaNY9gw==}
 
-  '@decky/ui@4.7.2':
-    resolution: {integrity: sha512-jYXVhbyyupXAcCuFqr7G2qjYVjp8hlMGF8zl8ALv67y0YhikAtfhA2rGUjCuaV3kdo9YrpBh8djRUJXdFPg/Eg==}
+  '@decky/ui@4.9.2':
+    resolution: {integrity: sha512-3cBmBuyctdMhAyE4MtMgK6oEMrjiW2BiMLfSJ/m6qxukRnb2PpvTTyYurnT83vZGVDeygcmcmWjs2nFzGlyLvQ==}
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -699,6 +702,11 @@ packages:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
 
+  prettier@3.5.3:
+    resolution: {integrity: sha512-QQtaxnoDJeAkDvDKWCLiwIXkTgRhwYDEQCghU9Z6q03iyek/rxRh/2lC3HB7P8sWT2xC/y5JDctPLBIGzHKbhw==}
+    engines: {node: '>=14'}
+    hasBin: true
+
   punycode@2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
@@ -749,6 +757,11 @@ packages:
 
   rollup-pluginutils@2.8.2:
     resolution: {integrity: sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==}
+
+  rollup@3.29.4:
+    resolution: {integrity: sha512-oWzmBZwvYrU0iJHtDmhsm662rC15FRXmcjCk1xD771dFDx5jJ02ufAQQTn0etB2emNk4J9EZg/yWKpsn9BWGRw==}
+    engines: {node: '>=14.18.0', npm: '>=8.0.0'}
+    hasBin: true
 
   rollup@4.22.5:
     resolution: {integrity: sha512-WoinX7GeQOFMGznEcWA1WrTQCd/tpEbMkc3nuMs9BT0CPjMdSjPMTVClwWd4pgSQwJdP65SK9mTCNvItlr5o7w==}
@@ -920,7 +933,7 @@ snapshots:
       tslib: 2.7.0
       typescript: 5.6.2
 
-  '@decky/ui@4.7.2': {}
+  '@decky/ui@4.9.2': {}
 
   '@isaacs/cliui@8.0.2':
     dependencies:
@@ -1535,6 +1548,8 @@ snapshots:
 
   picomatch@2.3.1: {}
 
+  prettier@3.5.3: {}
+
   punycode@2.3.1: {}
 
   queue-microtask@1.2.3: {}
@@ -1585,6 +1600,10 @@ snapshots:
   rollup-pluginutils@2.8.2:
     dependencies:
       estree-walker: 0.6.1
+
+  rollup@3.29.4:
+    optionalDependencies:
+      fsevents: 2.3.3
 
   rollup@4.22.5:
     dependencies:

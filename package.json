@@ -1,7 +1,7 @@
 {
-  "name": "decky-plugin-template",
+  "name": "decky-are-we-anti-cheat-yet",
   "version": "0.0.1",
-  "description": "A template to quickly create decky plugins from scratch, based on TypeScript and webpack",
+  "description": "A plugin to check if the game is anti-cheat yet",
   "type": "module",
   "scripts": {
     "build": "rollup -c",
@@ -19,7 +19,7 @@
     "steam-deck",
     "deck"
   ],
-  "author": "You <you@you.tld>",
+  "author": "Producdevity <y.gherbi.dev@gmail.com>",
   "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/SteamDeckHomebrew/decky-plugin-template/issues"
@@ -27,11 +27,12 @@
   "homepage": "https://github.com/SteamDeckHomebrew/decky-plugin-template#readme",
   "devDependencies": {
     "@decky/rollup": "^1.0.1",
-    "@decky/ui": "^4.7.2",
+    "@decky/ui": "^4.9.2",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
     "@types/webpack": "^5.28.5",
-    "rollup": "^4.22.5",
+    "prettier": "^3.5.3",
+    "rollup": "3.29.4",
     "typescript": "^5.6.2"
   },
   "dependencies": {
